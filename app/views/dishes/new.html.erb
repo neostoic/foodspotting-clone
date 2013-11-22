@@ -1,2 +1,8 @@
 <%= link_to "Back to all dishes", dishes_path %>
-<%= render 'form' %>
+<%= render "/shared_views/errors" %>
+<%= form_for @dish do |form| %>
+	<%= render form %>
+	<div>
+  	<%= form.submit "Create" %> 
+	</div>
+<% end %>

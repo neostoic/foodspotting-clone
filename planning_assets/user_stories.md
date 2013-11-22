@@ -36,3 +36,4 @@
 - As a restaurant, I can send SMS messages to contacts (numbers masked)
 - As a user, I can share posts on twitter and fb
 - As a user, I can like a dish
+- As add a tag to a dish

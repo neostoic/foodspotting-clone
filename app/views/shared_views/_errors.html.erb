@@ -1,0 +1,10 @@
+<% if @dish.errors.any? %>
+  <div>
+    <%= pluralize(@dish.errors.count, "error") %> prevented this dish from being submitted:
+    <ul>
+      <% @dish.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

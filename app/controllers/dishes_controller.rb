@@ -49,7 +49,7 @@ class DishesController < ApplicationController
   end
 
   def load_dish
-    @dish = Dish.find(params[:dish_id])
+    @dish = Dish.find(params[:id])
   end
 
 end

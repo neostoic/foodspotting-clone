@@ -1,2 +1,9 @@
 <%= link_to "Back to all dishes", dishes_path %>
-<%= render 'form' %>
+<%= render "/shared_views/errors" %>
+<%= form_for @dish do |form| %>
+	<%= render form %>
+	<div>
+  	<%= form.submit "Update" %> 
+  	<%= link_to "Destroy", @dish, method: :delete, confirm: "Are you sure?" %> 
+	</div>
+<% end %>
