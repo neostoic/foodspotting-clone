@@ -1,11 +1,14 @@
 class DishesController < ApplicationController
 
+  before_action :restrict_access, except: [:index]
+  before_action :load_dish, only: [:create, :update, :edit, :destroy]
+
+
   def index
     @dishes = Dish.all
   end
 
   def show
-    load_dish
   end
 
   def new
@@ -16,15 +19,13 @@ class DishesController < ApplicationController
     @dish = Dish.new(dish_params)
 
     if @dish.save
-      redirect_to dishes_path
+      redirect_to dishes_path, notice: "#{@movie.title} was submitted successfully!"
     else
       render :new
     end
   end
 
   def update
-    load_dish
-
     if @dish.update_attributes(dish_params)
       redirect_to dish_path(@dish)
     else
@@ -33,23 +34,22 @@ class DishesController < ApplicationController
   end
 
   def edit
-    load_dish
+
   end
 
   def destroy
-    load_dish
     @dish.destroy
     redirect_to dishes_path
   end
 
   protected
 
-  def dish_params
-    params.require(:dish).permit(:title, :description, :city, :user_id)
-  end
-
   def load_dish
     @dish = Dish.find(params[:id])
+  end
+
+  def dish_params
+    params.require(:dish).permit(:title, :description, :city, :user_id)
   end
 
 end
