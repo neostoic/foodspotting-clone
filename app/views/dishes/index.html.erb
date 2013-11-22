@@ -2,7 +2,7 @@
 <%= link_to "Submit a dish!", new_dish_path %>
 <hr>
 <% @dishes.each do |dish| %>
-	<!-- NEED TO ADD IMAGE UPLOAD HERE -->
+	<%= image_tag dish.image.to_s %>
 	<h2><%= dish.title %></h2>
 	<h2><%= dish.description %></h2>
 	<h3><%= dish.city %></h3>

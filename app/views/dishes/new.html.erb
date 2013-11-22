@@ -1,6 +1,6 @@
 <%= link_to "Back to all dishes", dishes_path %>
 <%= render "/shared_views/errors" %>
-<%= form_for @dish do |form| %>
+<%= form_for @dish, :html =>{:multipart => true} do |form| %>
 	<%= render form %>
 	<div>
   	<%= form.submit "Create" %> 

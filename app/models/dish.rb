@@ -2,6 +2,8 @@ class Dish < ActiveRecord::Base
 	belongs_to :user
 	has_many :comments
 
+	mount_uploader :image, DishUploader 
+
 	validates :title,
 		presence: true
 
