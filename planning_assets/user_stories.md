@@ -8,7 +8,7 @@
 - As a user, I can submit a dish along with it's name and location
 - As a user, I can see all the dishes I have submitted
 - As a user, I can click on other users to see all the dishes they have submitted
-- As a user, I can git the food a rating, on a 5 star system
+- As a user, I can give the food a rating, on a 5 star system
 
 ## Site Admin (Admin)
 - As an admin, I can log in to the service

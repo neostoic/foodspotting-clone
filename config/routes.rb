@@ -1,10 +1,33 @@
 FoodspottingClone::Application.routes.draw do
 
-  resources :dishes
+  #dish resources
+  resources :dishes do 
+    resource :like, only: [:create, :destroy]
+  end
+
+  #get 'dishes/vancouver' => 'vancouver_dishes#index'
+  #resources :vancouver_dishes, only: [:index]
+  #get 'dishes/toronto' => 'toronto_dishes#index'
+  #resources :toronto_dishes, only: [:index]
+
+  # resources :cities do # show => list of dishes
+  #     resources :dishes
+  # end
+  # /cities/toronto => cities#show with :id => 'toronto'
+  # show.html.erb: @dishes.each do ... end
+
 
   resources :users, only: [:new, :create]
 
   resources :sessions, only: [:new, :create, :destroy]
+
+  resource :profile, only: [:edit, :update]
+
+  resource :password, only: [:edit, :update] #passwords_controller
+
+  # resource :likes, only: [:new, :create, :destroy]
+
+
   
 
   # The priority is based upon order of creation: first created -> highest priority.

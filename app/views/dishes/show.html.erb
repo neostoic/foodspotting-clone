@@ -1,5 +1,5 @@
 <%= link_to "Back to all Dishes", dishes_path %>
-<%= image_tag @dish.image.to_s %>
+<%= image_tag @dish.image_url(:middle).to_s %>
 <h2><%= @dish.title %></h2>
 <h2><%= @dish.description %></h2>
 <h3><%= @dish.city %></h3>

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :dishes 
-	has_many :comments
+	has_many :likes
 
 	has_secure_password
 
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 		length: { in: 6..20 }, on: :create
 
 	def full_name
-		"#{firstname} #{lastname}"
+		"#{first_name} #{last_name}"
 	end
 
 end

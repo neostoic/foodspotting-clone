@@ -1,15 +1,13 @@
 class DishesController < ApplicationController
 
   before_action :restrict_access, except: [:index]
-  before_action :load_dish, only: [:show, :update, :edit, :destroy]
-
+  before_action :load_dish, only: [:show, :update, :edit, :destroy, :like]
 
   def index
     @dishes = Dish.all
   end
 
   def show
-
   end
 
   def new
@@ -35,7 +33,6 @@ class DishesController < ApplicationController
   end
 
   def edit
-
   end
 
   def destroy
