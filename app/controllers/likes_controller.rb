@@ -11,9 +11,4 @@ class LikesController < ApplicationController
     redirect_to dishes_path
   end
 
-  def num_likes
-  	likes = Like.where(params[:dish_id]).count
-  	"#{likes}"
-  end
-
 end

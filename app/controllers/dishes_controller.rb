@@ -15,7 +15,11 @@ class DishesController < ApplicationController
   end
 
   def create
-    @dish = Dish.new(dish_params)
+    
+    # @dish = Dish.new(dish_params)
+    # @dish.user = current_user
+    @dish = current_user.dishes.new(dish_params)
+    binding.pry
 
     if @dish.save
       redirect_to dishes_path, notice: "#{@dish.title} was submitted successfully!"
@@ -47,7 +51,7 @@ class DishesController < ApplicationController
   end
 
   def dish_params
-    params.require(:dish).permit(:title, :description, :city, :user_id, :image)
+    params.require(:dish).permit(:title, :description, :city, :image)
   end
 
 end

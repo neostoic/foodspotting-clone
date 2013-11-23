@@ -46,6 +46,10 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # RMagick
 gem 'rmagick'
 
+# Pry Debubber
+gem 'pry'
+gem 'pry-doc'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
