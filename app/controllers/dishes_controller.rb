@@ -8,6 +8,7 @@ class DishesController < ApplicationController
   end
 
   def show
+    
   end
 
   def new
@@ -15,11 +16,7 @@ class DishesController < ApplicationController
   end
 
   def create
-    
-    # @dish = Dish.new(dish_params)
-    # @dish.user = current_user
     @dish = current_user.dishes.new(dish_params)
-    binding.pry
 
     if @dish.save
       redirect_to dishes_path, notice: "#{@dish.title} was submitted successfully!"

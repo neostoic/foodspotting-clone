@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
+	def show
+		@user = User.find(params[:id])
+	end
+
 	def create 
 		@user = User.new(user_params)
 
@@ -12,6 +16,10 @@ class UsersController < ApplicationController
 		else
 			render :new
 		end
+	end
+
+	def to_s
+		"#{@user.first_name} #{@user.last_name}"
 	end
 
 	protected

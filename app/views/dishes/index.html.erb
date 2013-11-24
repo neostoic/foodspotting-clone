@@ -6,7 +6,7 @@
 	<h2><%= dish.title %></h2>
 	<h2><%= dish.description %></h2>
 	<h3><%= dish.city %></h3>
-	<h4>| <%= dish.user %> | <h4>
+	<h4><%= link_to "#{dish.user}", user_path(dish.user) %> <h4>
 	<%= link_to "Edit Dish", edit_dish_path(dish) %> | 
 	<%= link_to "Like Dish", dish_like_path(dish), method: :post %> |
 	<%= link_to "Unlike Dish", dish_like_path(dish), method: :delete %> |

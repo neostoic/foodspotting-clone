@@ -11,4 +11,8 @@ class LikesController < ApplicationController
     redirect_to dishes_path
   end
 
+  def to_s
+  	"#{user_id} likes this dish"
+  end
+
 end

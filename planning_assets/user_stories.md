@@ -1,14 +1,15 @@
 #Foodspotting - ripoff
 
 ## Restaurant Visitor (User)
-- As a user, I can sign up and sign into the service
+- As a user, I can sign up and sign into the service .
 - As a user, I can see all the dishes listed in given city
 - As a user, I can select a type of food and see all the dishes of that type, in a given city
-- As a user, I can select a dish to see more details
-- As a user, I can submit a dish along with it's name and location
+- As a user, I can select a dish to see more details. the dish page will show all the likes.
+- As a user, I can submit a dish along with it's name and location .
 - As a user, I can see all the dishes I have submitted
 - As a user, I can click on other users to see all the dishes they have submitted
-- As a user, I can give the food a rating, on a 5 star system
+- As a user, I can upload an avatar 
+- As a user, I can like a food .
 
 ## Site Admin (Admin)
 - As an admin, I can log in to the service
