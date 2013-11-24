@@ -37,8 +37,12 @@ class DishesController < ApplicationController
   end
 
   def destroy
-    @dish.destroy
-    redirect_to dishes_path
+    if current_user.id == @dish.user_id
+      @dish.destroy
+      redirect_to dishes_path, notice: "#{@dish.title} was deleted successfully!"
+    else
+      redirect_to dishes_path, notice: "Cannot delete another user's dish!"
+    end
   end
 
   protected

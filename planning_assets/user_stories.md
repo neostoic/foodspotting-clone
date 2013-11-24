@@ -7,7 +7,7 @@
 - As a user, I can select a dish to see more details. the dish page will show all the likes.
 - As a user, I can submit a dish along with it's name and location .
 - As a user, I can see all the dishes I have submitted
-- As a user, I can click on other users to see all the dishes they have submitted
+- As a user, I can click on other users to see all the dishes they have submitted 
 - As a user, I can upload an avatar 
 - As a user, I can like a food .
 

@@ -1,7 +1,7 @@
 <%= link_to "Back to all Dishes", dishes_path %>
 <h2><%= "#{@user.to_s}"%></h2>
-<h3>| <%=@user.email %> | <h4>
+<h4><%=@user.email %><h4>
 <%= link_to "Edit User", "#" %>
 <hr>
-<%= @user.likes.pluck(:user_id).each {|x| puts "#{x}" }%>
 <%= render "/shared_views/dish" %>
+

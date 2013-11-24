@@ -5,13 +5,15 @@ FoodspottingClone::Application.routes.draw do
     resource :like, only: [:create, :destroy]
   end
 
-  resources :users, only: [:show, :new, :create]
+  resources :users, only: [:new, :create, :show]
 
   resources :sessions, only: [:new, :create, :destroy]
 
   resource :profile, only: [:edit, :update]
 
   resource :password, only: [:edit, :update] #passwords_controller
+
+  # resource :likes, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

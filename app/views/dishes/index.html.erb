@@ -1,15 +1,17 @@
-<h1>foodspotting clone</h1>
-<%= link_to "Submit a dish!", new_dish_path %>
-<hr>
 <% @dishes.each do |dish| %>
-	<%= image_tag dish.image_url(:thumb).to_s %>
-	<h2><%= dish.title %></h2>
-	<h2><%= dish.description %></h2>
-	<h3><%= dish.city %></h3>
-	<h4><%= link_to "#{dish.user}", user_path(dish.user) %> <h4>
-	<%= link_to "Edit Dish", edit_dish_path(dish) %> | 
-	<%= link_to "Like Dish", dish_like_path(dish), method: :post %> |
-	<%= link_to "Unlike Dish", dish_like_path(dish), method: :delete %> |
-	<%= dish.likes.count %>
-	<hr>
+	<div class="col-6 col-sm-6 col-lg-4">
+		<p>
+			<%= link_to dish_path(dish) do %>
+				<%= image_tag dish.image_url(:middle).to_s%>
+			<% end %>
+		</p>
+		<h2><%= dish.title %></h2>
+		<h2><%= dish.description %></h2>
+		<h3><%= dish.city %></h3>
+		<h4><%= link_to dish.user, user_path(dish.user_id), method: :get %> </h4>
+		<%= link_to "Edit Dish", edit_dish_path(dish) %> | 
+		<%= link_to "Like Dish", dish_like_path(dish), method: :post %> |
+		<%= link_to "Unlike Dish", dish_like_path(dish), method: :delete %> |
+		<%= dish.likes.count %>
+	</div>
 <% end %>
