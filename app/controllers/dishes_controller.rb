@@ -4,7 +4,11 @@ class DishesController < ApplicationController
   before_action :load_dish, only: [:show, :update, :edit, :destroy, :like]
 
   def index
-    @dishes = Dish.all
+    if params[:city]
+      @dishes = Dish.where(city: params[:city])
+    else
+      @dishes = Dish.all
+    end
   end
 
   def show

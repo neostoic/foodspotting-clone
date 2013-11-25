@@ -2,16 +2,17 @@
 	<div class="col-6 col-sm-6 col-lg-4">
 		<p>
 			<%= link_to dish_path(dish) do %>
-				<%= image_tag dish.image_url(:middle).to_s%>
+				<%= image_tag dish.image_url(:middle).to_s, :class => "img-thumbnail" %>
 			<% end %>
 		</p>
-		<h2><%= dish.title %></h2>
-		<h2><%= dish.description %></h2>
-		<h3><%= dish.city %></h3>
-		<h4><%= link_to dish.user, user_path(dish.user_id), method: :get %> </h4>
-		<%= link_to "Edit Dish", edit_dish_path(dish) %> | 
-		<%= link_to "Like Dish", dish_like_path(dish), method: :post %> |
-		<%= link_to "Unlike Dish", dish_like_path(dish), method: :delete %> |
-		<%= dish.likes.count %>
+		<h4><%= dish.title %></h4>
+		<p><%= dish.description %></p>
+		<h5><%= dish.city %></5>
+		<h5><%= link_to dish.user, user_path(dish.user_id), method: :get %> </h5>
+		<h6>
+			<%= link_to "Like Dish", dish_like_path(dish), method: :post %> |
+			<%= link_to "Unlike Dish", dish_like_path(dish), method: :delete %> |
+			<%= dish.likes.count %> likes
+		</h6>
 	</div>
 <% end %>
