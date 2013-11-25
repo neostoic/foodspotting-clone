@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	before_action :restrict_access, except: [:index]
 	before_action :load_user, only: [:show, :update, :edit]
 
 	def new
