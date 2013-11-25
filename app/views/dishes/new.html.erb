@@ -1,3 +1,4 @@
+<div class="col-md-12">
 <%= link_to "Back to all dishes", dishes_path %>
 <%= render "/shared_views/errors" %>
 <%= form_for @dish, :html =>{:multipart => true} do |form| %>
@@ -6,3 +7,4 @@
   	<%= form.submit "Create", class: "btn btn-default" %> 
 	</div>
 <% end %>
+</div>

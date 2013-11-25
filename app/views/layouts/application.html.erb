@@ -27,9 +27,12 @@
         </form>
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
+            <% if current_user.admin == true %>
+              <li><%= link_to "Admin Dashboard", admin_users_path %></li>
+            <% end %>
           <!-- refactor style for 'a' link below -->
-          <li><%= link_to "#{current_user.to_s}", user_path(current_user) %></li>
-          <li><%=link_to "Log out", session_path("current"), method: :delete %></li>
+            <li><%= link_to "#{current_user.to_s}", user_path(current_user) %></li>
+            <li><%=link_to "Log out", session_path("current"), method: :delete %></li>
           <% else %>
           <!-- refactor style for 'a' link below -->
           <li><a href="#" data-toggle="modal" data-target="#LoginModal">Log in</a></li>

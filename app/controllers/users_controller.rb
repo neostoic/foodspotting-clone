@@ -6,11 +6,9 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		
 	end
 
 	def edit
-		
 	end
 
 	def update
@@ -31,15 +29,6 @@ class UsersController < ApplicationController
 			render :new
 		end
 	end
-
-	# def destroy
- #    if current_user
- #      @user.destroy
- #      redirect_to dishes_path, notice: "#Your account was deleted successfully!"
- #    else
- #      redirect_to dishes_path, notice: "Cannot delete another user's account!"
- #    end
- #  end
 
 	def to_s
 		"#{@user.first_name} #{@user.last_name}"

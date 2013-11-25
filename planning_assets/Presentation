@@ -1,0 +1,22 @@
+#Presentation:
+##User Stories
+##Page List
+##Show ER Diagram
+##App 
+- login as regular user
+- like a dish
+- select a city
+- search
+### login as admin user
+- go to admin dashboard
+- delete user
+### other shoutouts
+- point out gravatar for each user
+- upload picture gem
+- point out security concept /admin/users
+
+## Technical issue
+search functionality, city filter - go to dishes controller
+admin namespace
+setting up twitter bootstrap
+understanding routes, namespaces

@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  def new
-  end
 
   def create
   	user = User.find_by(email: params[:email])
@@ -9,8 +7,7 @@ class SessionsController < ApplicationController
   		session[:user_id] = user.id
   		redirect_to dishes_path, notice: "Welcome back, #{user.first_name}!"
   	else
-  		flash.new[:alert] = "Log in failed..."
-  		render :new
+  		redirect_to dishes_path, notice: "Login Failed"
   	end
   end
 
