@@ -1,0 +1,12 @@
+<div class="col-md-12">
+<div class="content">
+<%= form_for @user do |form| %>
+	<%= render form %>
+	<div>
+  	<%= form.submit "update", class: "btn btn-default"%> 
+  	<%= link_to "back", user_path, class: "btn btn-default" %>
+  	<%= link_to "delete", user_path, method: :delete, :confirm => 'Are you sure?' %>
+	</div>
+<% end %>
+</div>
+</div>

@@ -5,7 +5,7 @@ FoodspottingClone::Application.routes.draw do
     resource :like, only: [:create, :destroy]
   end
 
-  resources :users, only: [:new, :create, :show]
+  resources :users
 
   resources :sessions, only: [:new, :create, :destroy]
 

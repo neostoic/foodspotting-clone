@@ -1,15 +1,18 @@
-<div>
-	<%= form.file_field :image %>
-</div>
-<div>
-  <%= form.label "title" %><br>
-  <%= form.text_field "title" %>
-</div>
-<div>
-  <%= form.label "city" %><br>
-  <%= form.text_field "city" %>
-</div>
-<div>
-  <%= form.label "description" %><br>
-  <%= form.text_area "description" %>
+<div class="form-group">
+	<div>
+		<%= form.file_field :image %>
+	</div>
+	<br>
+	<div>
+	  <%= form.label "title" %><br>
+	  <%= form.text_field "title", class: "form-control" %>
+	</div>
+	<div>
+	  <%= form.label "city" %><br>
+	  <%= form.text_field "city", class: "form-control" %>
+	</div>
+	<div>
+	  <%= form.label "description" %><br>
+	  <%= form.text_area "description", class: "form-control" %>
+	</div>
 </div>

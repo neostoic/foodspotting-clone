@@ -6,6 +6,8 @@ class DishesController < ApplicationController
   def index
     if params[:city]
       @dishes = Dish.where(city: params[:city])
+    elsif params[:search]
+      @dishes = Dish.where("title like ?", "%#{params[:search]}%")
     else
       @dishes = Dish.all
     end

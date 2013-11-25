@@ -50,6 +50,12 @@ gem 'rmagick'
 gem 'pry'
 gem 'pry-doc'
 
+# Gravtastic
+gem 'gravtastic'
+
+# Quiet Assets
+gem 'quiet_assets', :group => :development
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

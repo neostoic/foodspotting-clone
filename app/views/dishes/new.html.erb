@@ -3,6 +3,6 @@
 <%= form_for @dish, :html =>{:multipart => true} do |form| %>
 	<%= render form %>
 	<div>
-  	<%= form.submit "Create" %> 
+  	<%= form.submit "Create", class: "btn btn-default" %> 
 	</div>
 <% end %>

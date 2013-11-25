@@ -1,7 +1,18 @@
-<%= link_to "Back to all Dishes", dishes_path %>
-<h2><%= "#{@user.to_s}"%></h2>
-<h4><%=@user.email %><h4>
-<%= link_to "Edit User", "#" %>
-<hr>
-<%= render "/shared_views/dish" %>
-
+<div class="col-md-12">
+	<p><%= image_tag @user.gravatar_url %></p>
+	<h6>Don't have a Gravatar? Get one <a href="http://en.gravatar.com/">here.</a>
+	<h4><%= "#{@user.to_s}"%></h4>
+	<h4><%=@user.email %></h4>
+	<%= link_to "Edit User", edit_user_path(@user) %>
+	<hr>
+	<h3>Dishes:</h3>
+	<% @user.dishes.each do |dish| %>
+	<%= image_tag dish.image_url(:thumb).to_s %>
+	<h2><%= dish.title %></h2>
+	<h3><%= dish.description %></h3>
+	<h3><%= dish.city %></h3>
+	<%= link_to "Edit Dish", edit_dish_path(dish) %> | 
+	<%= dish.likes.count %> likes
+	<hr>
+	<% end %>
+</div>

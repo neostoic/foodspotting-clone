@@ -1,10 +1,14 @@
-<%= link_to "Back to all dishes", dishes_path %>
 <%= render "/shared_views/errors" %>
+<div class="col-md-12">
+<div class="content">
 <%= image_tag @dish.image_url(:middle).to_s %>
 <%= form_for @dish do |form| %>
 	<%= render form %>
 	<div>
-  	<%= form.submit "Update" %> 
+  	<%= form.submit "update", class: "btn btn-default"%> 
+  	<%= link_to "back", dish_path, class: "btn btn-default" %>
   	<%= link_to "delete", dish_path, method: :delete, :confirm => 'Are you sure?' %>
 	</div>
 <% end %>
+</div>
+</div>
