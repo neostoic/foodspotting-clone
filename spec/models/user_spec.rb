@@ -2,21 +2,24 @@ require 'spec_helper'
 
 describe User do
 
-  describe "fullname" do 
+	before :each do 
+    @user = FactoryGirl.build :user
+  end
+
+  describe "full_name" do 
 
     it "returns the user's full name" do 
-      user = User.new(firstname: 'Ghostface', lastname: 'Killah')
-      expect(user.full_name).to eq("Ghostface Killah")
+      expect(@user.full_name).to eq("Method Man")
     end
   
   	it "returns just the firstname if lastname is not there" do
-  		user = User.new(firstname: 'Method')
-  		expect(user.full_name).to eq('Method')
+  		@user.last_name = nil
+  		expect(@user.full_name).to eq('Method')
   	end
 
   	it "returns just the lastname if firstname is not there" do
-  		user = User.new(lastname: 'Deck')
-  		expect(user.full_name).to eq('Deck')
+  		@user.first_name = nil
+  		expect(@user.full_name).to eq('Man')
   	end
 
   end
@@ -24,59 +27,55 @@ describe User do
   describe "registration" do
 
   	it "should fail without a password" do
-  		user = User.new(
-  			firstname: "Inspectah",
-  			lastname: "Deck",
-  			email: "inspectah.deck@gmail.com")
-  		expect(user.save).to eq(false)
-  		expect(user.errors[:password].first).to eq("can't be blank")
+  		@user = FactoryGirl.build :user, password: nil, password_confirmation: nil
+      expect(@user.save).to eq(false)
+      expect(@user.errors[:password].first).to eq("can't be blank")
   	end
   
   	it "should fail without password confirmation" do
-  		user = User.new(
-  			firstname: "U",
-  			lastname: "God",
-  			email: "u.god@gmail.com")
-  		user.password = 'ugodpassword'
-  		user.save
-  		expect(user.errors[:password_confirmation].first).to eq("can't be blank")
+  		@user.password_confirmation = nil
+  		@user.save
+  		expect(@user.errors[:password_confirmation].first).to eq("can't be blank")
   	end
 
   	it "should work with password and password confirmation" do 
-      user = User.new(
-        firstname: "Ol Dirty", 
-        lastname: "Bastard", 
-        email: "ol.dirty.bastard@gmail.com"
-      )
-      user.password = 'dirtydog'
-      user.password_confirmation = 'dirtydog'
-      expect(user.save).to eq(true)
+      expect(@user.save).to eq(true)
       expect(User.count).to eq(1) # not really needed but we are a cautious bunch
     end
 
     it "should not work if password and password confirmation don't match" do
-    	user = User.new(
-    		firstname: "Masta",
-    		lastname: "Killa",
-    		email: "masta.killa@gmail.com")
-    	user.password = 'mastakilla'
-    	user.password_confirmation = 'mastahkilla'
-    	expect(user.save).to eq(false)
-    	expect(user.errors[:password_confirmation].first).to eq("doesn't match Password")
+    	@user.password_confirmation = 'methodman'
+    	expect(@user.save).to eq(false)
+    	expect(@user.errors[:password_confirmation].first).to eq("doesn't match Password")
     end
 
     it "should not work if email is already taken by another user" do
-    	user = User.new(
-    		firstname: "Masta",
-    		lastname: "Killa",
-    		email: "masta.killa@gmail.com")
-    	
+    	@user.save
+    	new_email = @user.email
+    	user = FactoryGirl.build :user, email: new_email
+    	expect(user.save).to eq(false)
+    	expect(user.errors[:email][0]).to eq("has already been taken")
+    end
+
+    it "should not work for passwords less than 6 characters" do
+    	@user.password = '12345'
+    	@user.password_confirmation = '12345'
+    	@user.save
+    	expect(@user.save).to eq(false)
+    	expect(@user.errors[:password].first).to eq("is too short (minimum is 6 characters)")
+    end
+
+    it "should not work for passwords less than 6 characters" do
+    	@user.password = '123456789101112131415161718192021'
+    	@user.password_confirmation = '123456789101112131415161718192021'
+    	@user.save
+    	expect(@user.save).to eq(false)
+    	expect(@user.errors[:password].first).to eq("is too long (maximum is 20 characters)")
     end
 
   end
+  	
+  end
 
-    pending "should not work if email is already taken by another user"
-    pending "should not work for passwords less than 6 characters"
-    pending "should not work for passwords more than 20 characters"
     pending "should not work if email provided not a valid email address"
 end

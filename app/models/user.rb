@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 
-	validates :email,
+	validates :email, uniqueness: true,
 		presence: true
 
 	validates :first_name,
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 		length: { in: 6..20 }, on: :create
 
 	def full_name
-		"#{first_name} #{last_name}"
+		"#{first_name} #{last_name}".strip
 	end
 
 end
