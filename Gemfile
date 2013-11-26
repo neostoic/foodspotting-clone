@@ -20,9 +20,6 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -34,11 +31,6 @@ gem 'jbuilder', '~> 1.2'
 
 # CarrierWave gem. Read more: https://github.com/carrierwaveuploader/carrierwave
 gem 'carrierwave'
-
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
@@ -53,14 +45,21 @@ gem 'pry-doc'
 # Gravtastic
 gem 'gravtastic'
 
-# Quiet Assets
-gem 'quiet_assets', :group => :development
+group :development, :test do
+	# Quiet Assets
+	gem 'quiet_assets'
+	gem 'rspec-rails', '~> 3.0.0.beta'
+	gem 'pry'
+	gem 'pry-doc'
+  gem 'pry-debugger'
+  gem 'factory_girl_rails'
+  gem 'table_print'	
+end
+
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
+end
 
 # Use unicorn as the app server
 # gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
