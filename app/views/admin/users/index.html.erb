@@ -1,5 +1,5 @@
 <% @users.each do |user| %>
-	<h4><%= user.to_s %></h4>
+	<h4><%= user.full_name %></h4>
 	<h4><%= user.email %></h4>
 	<%= link_to "Delete User", admin_user_path(user), method: :delete, :confirm => 'Are you sure?' %>
 	<hr>

@@ -3,10 +3,10 @@
 	<h2><%= @dish.title %></h2>
 	<h2><%= @dish.description %></h2>
 	<h3><%= @dish.city %></h3>
-	<h4><%= link_to @dish.user, user_path(@dish.user_id), method: :get %> </h4>
+	<h4><%= link_to @dish.user.full_name, user_path(@dish.user_id), method: :get %> </h4>
 	<%= link_to "Edit Dish", edit_dish_path(@dish) %>
 	<hr>
 	<% @dish.likes.each do |like| %>
-		<h5><%= like.user %> likes this dish</h5><hr>
+		<h5><%= like.user.full_name %> likes this dish</h5><hr>
 	<% end %>
 </div>

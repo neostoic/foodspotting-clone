@@ -6,7 +6,7 @@
 			<% end %>
 		</p>
 		<h4><%= dish.title %></h4>
-		<h5><%= link_to dish.user, user_path(dish.user_id), method: :get %> </h5>
+		<h5><%= link_to dish.user.full_name, user_path(dish.user_id), method: :get %> </h5>
 		<h6>
 			<%= link_to "Like Dish", dish_like_path(dish), method: :post %> |
 			<%= dish.likes.count %> likes

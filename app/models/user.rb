@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 	validates :password,
 		length: { in: 6..20 }, on: :create
 
-	def to_s
+	def full_name
 		"#{first_name} #{last_name}"
 	end
 
