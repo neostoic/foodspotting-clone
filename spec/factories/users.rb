@@ -1,6 +1,6 @@
 FactoryGirl.define do
 
-  factory :user do
+  factory :user do |user|
     first_name 'Method'
     last_name  'Man'
     sequence(:email) {|i| "method-#{i}@wu-tang.com" } 
@@ -10,5 +10,6 @@ FactoryGirl.define do
 	  factory :admin_user do
 	    admin true
     end
+
   end
 end

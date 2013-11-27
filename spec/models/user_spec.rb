@@ -6,6 +6,15 @@ describe User do
     @user = FactoryGirl.build :user
   end
 
+  describe "associations" do
+    it "can have many dishes" do
+      @user.save
+      first_dish = FactoryGirl.create :dish, user_id: @user.id
+      second_dish = FactoryGirl.build :dish, user_id: @user.id
+      expect(second_dish.save).to eq(true)
+    end
+  end
+
   describe "full_name" do 
 
     it "returns the user's full name" do 
@@ -74,8 +83,6 @@ describe User do
     end
 
   end
-  	
-  end
-
+    # test once email validation email is added
     pending "should not work if email provided not a valid email address"
 end

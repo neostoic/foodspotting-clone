@@ -1,8 +1,11 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :like do
+  factory :dish do
   	user
-  	dish
+  	title 			'Ramen'
+  	city  			'Vancouver'
+  	description 'Kintaro Ramen'
+  	#image
   end
 end
