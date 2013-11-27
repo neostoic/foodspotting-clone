@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe Dish do
-  pending "add some examples to (or delete) #{__FILE__}"
+  pending "think of dish model tests"
 end
