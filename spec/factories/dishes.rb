@@ -6,6 +6,6 @@ FactoryGirl.define do
   	title 			'Ramen'
   	city  			'Vancouver'
   	description 'Kintaro Ramen'
-  	#image
+  	image				'/path/to/test_url'
   end
 end

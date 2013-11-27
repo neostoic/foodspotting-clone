@@ -1,5 +1,5 @@
-require 'spec_helper'
+# require 'spec_helper'
 
-describe LikeController do
+# describe LikeController do
 	
-end
+# end
