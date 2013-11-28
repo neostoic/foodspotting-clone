@@ -14,7 +14,6 @@ class DishesController < ApplicationController
   end
 
   def show
-    
   end
 
   def new
@@ -32,6 +31,7 @@ class DishesController < ApplicationController
   end
 
   def update
+    binding.pry
     if @dish.update_attributes(dish_params)
       redirect_to dish_path(@dish)
     else

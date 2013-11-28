@@ -4,16 +4,31 @@ class DishUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
+  include CarrierWave::MimeTypes
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  storage :fog
   # storage :fog
+
+  CarrierWave.configure do |config|
+    config.fog_credentials = {
+      :provider               => 'AWS',                        # required
+      :aws_access_key_id      => 'AKIAIMA2O5NAJAC466EQ',       # required
+      :aws_secret_access_key  => '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',                        # required
+      :region                 => 'us-west-2',                  # optional, defaults to 'us-east-1'
+      #:host                   => 'http://s3.amazonaws.com/',             # optional, defaults to nil
+      #:endpoint               => '' # optional, defaults to nil
+    }
+    config.fog_directory  = 'foodspotting-clone/assets/image'                     # required
+    #config.fog_public     = false                                   # optional, defaults to true
+    #config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "#{model.id}"
   end
 
 

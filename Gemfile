@@ -42,6 +42,10 @@ gem 'pry-doc'
 # Gravtastic
 gem 'gravtastic'
 
+# Fog for S3
+gem 'fog'
+gem 'unf'
+
 group :production do
 	gem 'rails_12factor'
 	gem 'pg'
