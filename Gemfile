@@ -45,6 +45,11 @@ gem 'pry-doc'
 # Gravtastic
 gem 'gravtastic'
 
+group :production do
+	gem 'rails_12factor'
+	gem 'pg'
+end
+
 group :development, :test do
 	# Quiet Assets
 	gem 'quiet_assets'
@@ -61,5 +66,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+ruby '2.0.0'
 # Use unicorn as the app server
 # gem 'unicorn'
