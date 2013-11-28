@@ -4,6 +4,18 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 
+require 'capybara/rspec'
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
+
+def create_dish_and_login
+  @user = FactoryGirl.create :user, email: 'abid.velshi@gmail.com'
+  visit '/sessions/new'
+  fill_in 'email', with: @user.email
+  fill_in 'password', with: 'gobbledigook'
+  click_button 'Log In'
+end
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end

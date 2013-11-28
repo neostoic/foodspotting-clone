@@ -55,12 +55,13 @@ group :development, :test do
 	# Quiet Assets
 	gem 'quiet_assets'
 	gem 'rspec-rails', '~> 3.0.0.beta'
-	gem 'pry'
 	gem 'pry-doc'
   gem 'pry-debugger'
   gem 'factory_girl_rails'
   gem 'table_print'	
 	gem 'sqlite3'
+	gem 'capybara', '~> 2.2.0'
+	gem 'poltergeist'
 end
 
 group :doc do
