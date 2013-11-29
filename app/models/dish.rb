@@ -12,4 +12,7 @@ class Dish < ActiveRecord::Base
 
 	validates :description,
 		presence: true
+
+	validates :restaurant,
+		presence: true
 end

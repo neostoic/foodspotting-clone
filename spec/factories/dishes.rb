@@ -5,7 +5,8 @@ FactoryGirl.define do
   	user
   	title 			'Ramen'
   	city  			'Vancouver'
-  	description 'Kintaro Ramen'
+  	description 'Tsukamen style'
   	image				'/path/to/test_url'
+  	restaurant	'Kintaro Ram'
   end
 end
