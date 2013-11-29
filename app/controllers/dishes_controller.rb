@@ -4,10 +4,13 @@ class DishesController < ApplicationController
   before_action :load_dish, only: [:show, :update, :edit, :destroy, :like]
 
   def index
+
     if params[:city]
       @dishes = Dish.where(city: params[:city])
     elsif params[:search]
       @dishes = Dish.where("title like ?", "%#{params[:search]}%")
+    elsif params[:restaurant]
+      @dishes = Dish.where(restaurant: params[:restaurant])
     else
       @dishes = Dish.all
     end
@@ -57,7 +60,7 @@ class DishesController < ApplicationController
   end
 
   def dish_params
-    params.require(:dish).permit(:title, :description, :city, :image)
+    params.require(:dish).permit(:title, :description, :city, :image, :restaurant)
   end
 
 end

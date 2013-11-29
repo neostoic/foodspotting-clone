@@ -4,13 +4,39 @@ describe DishesController do
 
 	render_views
 
-	describe "GET 'dishes#index'" do
-		it "returns http success" do
-			get :index
-			expect(response).to be_success
-			expect(response.body).to render_template('index')
+	context "dishes#index" do 
+		context "search actions" do
+			before :each do 
+				@dish1 = FactoryGirl.create :dish, city: "Boston", restaurant: "Toro"
+				@dish2 = FactoryGirl.create :dish, city: "Boston", restaurant: "The Franklin", user: @dish1.user
+				@dish3 = FactoryGirl.create :dish, city: "Toronto", user: @dish1.user
+			end
+
+			it "find 2 entries when searching by city: Boston" do
+				session[:user_id] = @dish1.user.id
+				get :index, city: "Boston"
+				assigns(:dishes).length.should be(2)
+				assigns(:dishes).first.city.should eq("Boston")
+			end
+
+			it "find 1 entry when searching by restaurant: Toro" do
+				session[:user_id] = @dish1.user.id
+				get :index, restaurant: "Toro"
+				assigns(:dishes).length.should be(1)
+				assigns(:dishes).first.restaurant.should eq("Toro")
+			end
+
+		end
+		
+		describe "GET 'dishes#index'" do
+			it "returns http success" do
+				get :index
+				expect(response).to be_success
+				expect(response.body).to render_template('index')
+			end
 		end
 	end
+
 
 	describe "POST 'dishes#create" do
 		it "creates a POST request for a new dish" do
@@ -72,6 +98,12 @@ describe DishesController do
 			end
 		end
 
+		describe "search functionality" do
+			it "searches for"
+		end
+
+
 	end
+
 
 end
