@@ -6,11 +6,19 @@ describe User do
     @user = FactoryGirl.build :user
   end
 
+
+  context "with subscription" do
+    pending "should have only one subscription"
+    
+      
+
+  end
+
   describe "associations" do
     it "can have many dishes" do
       @user.save
-      first_dish = FactoryGirl.create :dish, user_id: @user.id
-      second_dish = FactoryGirl.build :dish, user_id: @user.id
+      first_dish = FactoryGirl.create :dish, user: @user
+      second_dish = FactoryGirl.build :dish, user: @user
       expect(second_dish.save).to eq(true)
     end
   end
