@@ -4,7 +4,7 @@ class DishesController < ApplicationController
   before_action :load_dish, only: [:show, :update, :edit, :destroy, :like]
 
   def index
-
+    #Refactor
     if params[:city]
       @dishes = Dish.where(city: params[:city])
     elsif params[:search]

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131129004059) do
+ActiveRecord::Schema.define(version: 20131204210949) do
 
   create_table "dishes", force: true do |t|
     t.string   "title"
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 20131129004059) do
   add_index "likes", ["dish_id"], name: "index_likes_on_dish_id"
   add_index "likes", ["user_id"], name: "index_likes_on_user_id"
 
+  create_table "subscriptions", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -42,6 +47,7 @@ ActiveRecord::Schema.define(version: 20131129004059) do
     t.datetime "updated_at"
     t.boolean  "admin"
     t.string   "password_digest"
+    t.boolean  "restaurant_owner"
   end
 
 end

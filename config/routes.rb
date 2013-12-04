@@ -11,6 +11,10 @@ FoodspottingClone::Application.routes.draw do
     resources :users, only: [:index, :destroy]
   end
 
+  # namespace :restaurant_owner do
+  #   get 'dishes' => 'dishes#index'
+  # end
+
   resources :sessions, only: [:new, :create, :destroy]
 
   resource :profile, only: [:edit, :update]
