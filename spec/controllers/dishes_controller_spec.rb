@@ -16,6 +16,7 @@ describe DishesController do
 				session[:user_id] = @dish1.user.id
 				get :index, city: "Boston"
 				assigns(:dishes).length.should be(2)
+				#TODO refactor to pass object
 				assigns(:dishes).first.city.should eq("Boston")
 			end
 
@@ -23,6 +24,7 @@ describe DishesController do
 				session[:user_id] = @dish1.user.id
 				get :index, restaurant: "Toro"
 				assigns(:dishes).length.should be(1)
+				#TODO refactor to pass object
 				assigns(:dishes).first.restaurant.should eq("Toro")
 			end
 
@@ -97,11 +99,6 @@ describe DishesController do
 				expect(response.status).to equal(302) 
 			end
 		end
-
-		describe "search functionality" do
-			it "searches for"
-		end
-
 
 	end
 

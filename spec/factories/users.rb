@@ -11,5 +11,9 @@ FactoryGirl.define do
 	    admin true
     end
 
+    factory :restaurant_owner do
+      restaurant_owner true
+    end
+
   end
 end
