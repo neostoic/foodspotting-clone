@@ -62,6 +62,9 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'capybara', '~> 2.2.0'
 	gem 'poltergeist'
+	gem 'guard-rspec', require: false
+	gem 'rb-fsevent'
+	gem 'guard-livereload'
 end
 
 group :doc do
