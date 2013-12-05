@@ -13,8 +13,7 @@ describe Subscription do
 			expect(@second_subscription.save).to eq(false)
 		end
 		
-		it "should have many payments" do
-		end
+		pending "should have many payments" 
 	end
 
 	context "validations" do
