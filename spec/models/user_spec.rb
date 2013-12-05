@@ -9,9 +9,6 @@ describe User do
 
   context "with subscription" do
     pending "should have only one subscription"
-    
-      
-
   end
 
   describe "associations" do

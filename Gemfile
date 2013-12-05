@@ -65,6 +65,7 @@ group :development, :test do
 	gem 'guard-rspec', require: false
 	gem 'rb-fsevent'
 	gem 'guard-livereload'
+	gem 'zeus', ">= 0.13.4.pre2"
 end
 
 group :doc do
