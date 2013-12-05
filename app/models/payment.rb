@@ -13,10 +13,11 @@ class Payment < ActiveRecord::Base
 	protected
 	
 	def set_paid_date
-		paid_date = Date.now
+		paid_date = Date.today
 	end
 
 	def send_receipt_email
 		#TODO send email
 	end
+
 end

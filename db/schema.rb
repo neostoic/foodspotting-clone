@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131205034915) do
+ActiveRecord::Schema.define(version: 20131205223333) do
 
   create_table "dishes", force: true do |t|
     t.string   "title"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 20131205034915) do
     t.boolean  "admin"
     t.string   "password_digest"
     t.boolean  "restaurant_owner"
-    t.string   "cc_token"
     t.string   "card_token"
     t.string   "stripe_customer_token"
   end
