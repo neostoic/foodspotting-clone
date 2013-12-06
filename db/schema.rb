@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131205223333) do
+ActiveRecord::Schema.define(version: 20131206000329) do
 
   create_table "dishes", force: true do |t|
     t.string   "title"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20131205223333) do
     t.string   "status"
     t.datetime "last_payment_date"
     t.integer  "num_failures"
+    t.datetime "next_payment_date"
   end
 
   create_table "users", force: true do |t|

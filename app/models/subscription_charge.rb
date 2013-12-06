@@ -1,4 +1,6 @@
 class SubscriptionCharge	
+	SUBSCRIPTION_AMOUNT = 500
+
 	def initialize(subscription)
 		@subscription = subscription
 	end
@@ -13,10 +15,11 @@ class SubscriptionCharge
 	  	currency: "cad"
 		)
 
-		# if customer_charge.paid?
-		# 	@subscription.paid_date = Date.today
-		# 	p = @subscription.payments.create(amount)
-		# end
+		if customer_charge.paid?
+		 	@subscription.next_payment_date = @subscription.next_payment_date.advance(:months => 1)
+			@subscription.last_payment_date = Date.today
+		 	@subscription.payments.create(amount: SUBSCRIPTION_AMOUNT, paid_date: Date.today)
+		end
 		#TODO ADD RESCUE
 	end
 end

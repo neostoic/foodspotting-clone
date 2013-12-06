@@ -14,4 +14,13 @@ class Subscription < ActiveRecord::Base
 	
 	validates :status,
 		presence: true
+
+	default_value_for :start_date do
+		DateTime.now
+	end
+
+	default_value_for :next_payment_date do
+		DateTime.now
+	end
+
 end

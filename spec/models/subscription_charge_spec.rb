@@ -1,33 +1,55 @@
 require 'spec_helper'
 
 describe SubscriptionCharge do
-		before :each do 
-    	@subscription = FactoryGirl.create :subscription
-    	@sc = SubscriptionCharge.new(@subscription)
-  	end
-		
-		context "#charge!" do
-			it "should attempt to create a new charge through Stripe" do
-				# setup a instance of a SC
-				# set an expectation that when #charge! is called on the instance, it will make a call to Stripe with certain params
-				# execute the charge! so that the above expectation can be checked
+	before :each do 
+  	@subscription = FactoryGirl.create :subscription
+  	@sc = SubscriptionCharge.new(@subscription)
+	end
+	
+	context "#charge!" do
+		it "should attempt to create a new charge through Stripe" do
+			stripe_charge_double = double(:paid? => true)
+			expect(Stripe::Charge).to receive(:create).once.with({
+				card: @subscription.user.card_token,
+				amount: 500,
+				currency: 'cad'
+				}).and_return(stripe_charge_double)
+			@sc.charge!
+		end
 
-				stripe_charge_double = double(:paid? => true)
-				expect(Stripe::Charge).to receive(:create).once.with({
-					card: @subscription.user.card_token,
-					amount: 500,
-					currency: 'cad'
-					}).and_return(stripe_charge_double)
-				@sc.charge!
-			end
+		it "should set the next_payment_date to next month" do
+			stripe_charge_double = double(:paid? => true)
+			next_payment_date = @subscription.next_payment_date
+			expect(Stripe::Charge).to receive(:create).once.with({
+				card: @subscription.user.card_token,
+				amount: 500,
+				currency: 'cad'
+				}).and_return(stripe_charge_double)
+			@sc.charge!
+			expect(@subscription.next_payment_date).to eq(next_payment_date.advance(months: 1))
+		end
 
-		# it "should successfully create a charge" do
-		# 	@payment.charge!
-		# 	expect(customer_charge.response.paid).eq (true)
-		# end
+		it "should set the last_payment_date to today" do
+			stripe_charge_double = double(:paid? => true)
+			expect(Stripe::Charge).to receive(:create).once.with({
+				card: @subscription.user.card_token,
+				amount: 500,
+				currency: 'cad'
+				}).and_return(stripe_charge_double)
+			@sc.charge!
+			expect(@subscription.last_payment_date.to_date).to eq(Date.today)
+		end
 
-		# it "should successfully deny a charge" do
-		# end
+		it "should create a payment, if successful" do
+			stripe_charge_double = double(:paid? => true)
+			expect(Stripe::Charge).to receive(:create).once.with({
+				card: @subscription.user.card_token,
+				amount: 500,
+				currency: 'cad'
+				}).and_return(stripe_charge_double)
+			@sc.charge!
+			expect(@subscription.payments.count).to eq(1)
+		end
 	end
 	
 end

@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/tsmango/default_value_for.git
+  revision: 52f1c40f0aa1a043ae15a69379a08ab0a5421c6b
+  specs:
+    default_value_for (2.0.2)
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: f369ca16f956979d7e2a68242399417197f43168
   specs:
@@ -257,6 +263,7 @@ DEPENDENCIES
   capybara (~> 2.2.0)
   carrierwave
   coffee-rails (~> 4.0.0)
+  default_value_for!
   factory_girl_rails
   fog
   gravtastic

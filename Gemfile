@@ -49,6 +49,9 @@ gem 'unf'
 # Stripe
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
+# Default value for models
+gem 'default_value_for', :git => 'git://github.com/tsmango/default_value_for.git'
+
 group :production do
 	gem 'rails_12factor'
 	gem 'pg'
