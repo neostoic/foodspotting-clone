@@ -9,17 +9,20 @@ class SubscriptionCharge
 		#TODO store api_key somewhere safe
 		Stripe.api_key = "sk_test_z5TEngEiDxsQ1CQV1BX685MS"
 
-		customer_charge = Stripe::Charge.create(
-	  	card: @subscription.user.card_token,
-	  	amount: 500,
-	  	currency: "cad"
-		)
+		begin
+			customer_charge = Stripe::Charge.create(
+		  	card: @subscription.user.card_token,
+		  	amount: 500,
+		  	currency: "cad"
+			)
 
-		if customer_charge.paid?
-		 	@subscription.next_payment_date = @subscription.next_payment_date.advance(:months => 1)
-			@subscription.last_payment_date = Date.today
-		 	@subscription.payments.create(amount: SUBSCRIPTION_AMOUNT, paid_date: Date.today)
+			if customer_charge.paid?
+			 	@subscription.next_payment_date = @subscription.next_payment_date.advance(months: 1)
+				@subscription.last_payment_date = Date.today
+			 	@subscription.payments.create(amount: SUBSCRIPTION_AMOUNT, paid_date: Date.today)
+			end
+
+			rescue Stripe::CardError => e
 		end
-		#TODO ADD RESCUE
 	end
 end

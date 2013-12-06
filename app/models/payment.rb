@@ -1,21 +1,18 @@
 class Payment < ActiveRecord::Base
 	belongs_to :subscription
 
-	validates :amount,
+	validates :amount, numericality: { only_integer: true },
 		presence: true
 
 	validates :paid_date,
 		presence: true
 
-	after_create :set_paid_date
+	validates :subscription,
+		presence: true
+
 	after_create 	:send_receipt_email
 
 	protected
-	
-	def set_paid_date
-		binding.pry
-		self.paid_date = Date.today
-	end
 
 	def send_receipt_email
 		#TODO send email

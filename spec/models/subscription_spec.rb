@@ -6,20 +6,11 @@ describe Subscription do
     @subscription = FactoryGirl.build :subscription
   end
 
-	context "associations" do
-		it "can only have one user" do
-			@subscription.save
-			@second_subscription = FactoryGirl.build :subscription, user: @subscription.user
-			expect(@second_subscription.save).to eq(false)
-		end
-		
-		pending "should have many payments" 
-	end
-
 	context "validations" do
 		it "should validate the presence of user_id" do
 			@subscription.user = nil
-			expect(@subscription.save).to eq(false)
+			expect(@subscription).to_not be_valid
+			expect(@subscription.errors[:user].first).to eq("can't be blank")
 		end
 		it "should validate the presence of start_date" do
 			@subscription.start_date = nil

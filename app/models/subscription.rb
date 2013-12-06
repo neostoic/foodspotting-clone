@@ -3,8 +3,7 @@ class Subscription < ActiveRecord::Base
 	has_many :payments
 
 	validates :user,
-		presence: true,
-		uniqueness: true
+		presence: true
 	
 	validates :start_date,
 		presence: true

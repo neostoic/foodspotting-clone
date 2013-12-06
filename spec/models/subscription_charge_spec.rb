@@ -51,5 +51,17 @@ describe SubscriptionCharge do
 			expect(@subscription.payments.count).to eq(1)
 		end
 	end
+
+	context "#charge! failure" do
+		it "should return a stripe error" do
+			expect(Stripe::Charge).to receive(:create).once.with({
+				card: @subscription.user.card_token,
+				amount: 500,
+				currency: 'cad'
+				}).and_raise(Stripe::CardError.new("","",""))
+			@sc.charge!
+			expect(@subscription.payments.count).to eq(0)
+		end
+	end
 	
 end
