@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe SubscriptionCharge do
-	before :each do 
+
+	before :each do
+		allow_any_instance_of(Subscription).to receive(:start_subscription)
   	@subscription = FactoryGirl.create :subscription
   	@sc = SubscriptionCharge.new(@subscription)
 	end
@@ -10,7 +12,7 @@ describe SubscriptionCharge do
 		it "should attempt to create a new charge through Stripe" do
 			stripe_charge_double = double(:paid? => true)
 			expect(Stripe::Charge).to receive(:create).once.with({
-				card: @subscription.user.card_token,
+				user: @subscription.user.stripe_customer_token,
 				amount: 500,
 				currency: 'cad'
 				}).and_return(stripe_charge_double)
@@ -21,7 +23,7 @@ describe SubscriptionCharge do
 			stripe_charge_double = double(:paid? => true)
 			next_payment_date = @subscription.next_payment_date
 			expect(Stripe::Charge).to receive(:create).once.with({
-				card: @subscription.user.card_token,
+				user: @subscription.user.stripe_customer_token,
 				amount: 500,
 				currency: 'cad'
 				}).and_return(stripe_charge_double)
@@ -32,7 +34,7 @@ describe SubscriptionCharge do
 		it "should set the last_payment_date to today" do
 			stripe_charge_double = double(:paid? => true)
 			expect(Stripe::Charge).to receive(:create).once.with({
-				card: @subscription.user.card_token,
+				user: @subscription.user.stripe_customer_token,
 				amount: 500,
 				currency: 'cad'
 				}).and_return(stripe_charge_double)
@@ -43,7 +45,7 @@ describe SubscriptionCharge do
 		it "should create a payment, if successful" do
 			stripe_charge_double = double(:paid? => true)
 			expect(Stripe::Charge).to receive(:create).once.with({
-				card: @subscription.user.card_token,
+				user: @subscription.user.card_token,
 				amount: 500,
 				currency: 'cad'
 				}).and_return(stripe_charge_double)
@@ -55,7 +57,7 @@ describe SubscriptionCharge do
 	context "#charge! failure" do
 		it "should return a stripe error" do
 			expect(Stripe::Charge).to receive(:create).once.with({
-				card: @subscription.user.card_token,
+				user: @subscription.user.stripe_customer_token,
 				amount: 500,
 				currency: 'cad'
 				}).and_raise(Stripe::CardError.new("","",""))

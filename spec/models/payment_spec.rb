@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Payment do
 
 	before :each do 
+		allow_any_instance_of(Subscription).to receive(:start_subscription)
     @payment = FactoryGirl.build :payment
   end
 

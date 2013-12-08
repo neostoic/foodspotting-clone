@@ -6,6 +6,7 @@ FoodspottingClone::Application.routes.draw do
   end
 
   resources :users, only: [:new, :create, :edit, :update, :show]
+  resource :subscription, only: [:create, :new]
 
   namespace :admin do
     resources :users, only: [:index, :destroy]

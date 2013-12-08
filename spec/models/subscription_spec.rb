@@ -16,14 +16,6 @@ describe Subscription do
 			@subscription.start_date = nil
 			expect(@subscription.save).to eq(false)
 		end
-		it "should validate the presence of end_date" do
-			@subscription.end_date = nil
-			expect(@subscription.save).to eq(false)
-		end
-		it "should validate the presence of status" do
-			@subscription.status = nil
-			expect(@subscription.save).to eq(false)
-		end
 	end
 
 	context "methods" do

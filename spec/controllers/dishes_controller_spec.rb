@@ -39,7 +39,6 @@ describe DishesController do
 		end
 	end
 
-
 	describe "POST 'dishes#create" do
 		it "creates a POST request for a new dish" do
 			dish = FactoryGirl.build :dish
